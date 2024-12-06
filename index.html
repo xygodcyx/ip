@@ -47,7 +47,7 @@
         .then(async (ip) => {
             console.log(ip)
             document.querySelector("h1").innerText = `ip地址获取成功:${ip}\n正在获取地址中...`
-            const data = await axios.get(`http://jp-tyo-bgp-1.ofalias.net:57391/locale?ip=${ip}`)
+            const data = await axios.get(`https://jp-tyo-bgp-1.ofalias.net:57391/locale?ip=${ip}`)
             document.querySelector("h1").innerText = `您的地址为${data.data.data.slice(0, -4)}`
         })
         .catch((error) => console.error('Error:', error));
