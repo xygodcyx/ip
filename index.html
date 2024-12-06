@@ -46,7 +46,7 @@
         .then((ip) => {
             console.log(ip)
             document.querySelector("h1").innerText = `ip地址获取成功:${ip}\n正在获取地址中...`
-            fetch(`https://ip-server.quhou.top?ip=${ip}`, {
+            fetch(`http://localhost:7788/locale?ip=${ip}`, {
                 method: "get"
             }).then(res => {
                 res.json().then(data => {
