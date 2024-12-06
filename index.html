@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ip</title>
+    <script src="./axios.min.js"></script>
 </head>
 <body>
 <h1></h1>
@@ -43,16 +44,11 @@
 
     // 调用示例
     getLocalIP()
-        .then((ip) => {
+        .then(async (ip) => {
             console.log(ip)
             document.querySelector("h1").innerText = `ip地址获取成功:${ip}\n正在获取地址中...`
-            fetch(`https://ip-server.quhou.top/locale?ip=${ip}`, {
-                method: "get"
-            }).then(res => {
-                res.json().then(data => {
-                    document.querySelector("h1").innerText = `您的地址为${data.data.slice(0, -4)}`
-                })
-            })
+            const data = await axios.get(`https://ip-server.quhou.top?ip=${ip}`)
+            document.querySelector("h1").innerText = `您的地址为${data.data.slice(0, -4)}`
         })
         .catch((error) => console.error('Error:', error));
 
